@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+    db:
+        image: 'postgres:13'
+        container_name: 'university_dev_db'
+        ports:
+            - 15434:5432
+        environment:
+            - 'POSTGRES_DB=university_dev'
+            - 'POSTGRES_USER=admin_dev'
+            - 'POSTGRES_PASSWORD=5678'
