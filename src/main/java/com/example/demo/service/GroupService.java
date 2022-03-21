@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.GroupDto;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  * @author Aleksey Zhdanov
@@ -11,11 +10,12 @@ import java.util.List;
 public interface GroupService {
 
     /**
-     * <p>Возвращает список групп</p>
+     * <p>Возвращает страницу с группами</p>
      *
-     * @return Список групп
+     * @param pageIndex Номер страницы
+     * @return Страница с группами
      */
-    List<GroupDto> findAll();
+    Page<GroupDto> findPage(Integer pageIndex);
 
     /**
      * <p>Возвращает группу по идентификатору</p>

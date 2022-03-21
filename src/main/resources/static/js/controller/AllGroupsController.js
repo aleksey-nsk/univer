@@ -6,13 +6,40 @@ universityApp.controller('AllGroupsController', function ($scope, $http) {
         $http.get(url);
     };
 
-    $scope.fillGroupTable = function () {
+    $scope.generatePageIndexes = function (startPage, endPage) {
+        console.log("Method generatePageIndexes(), startPage=" + startPage + ", endPage=" + endPage);
+        let arr = [];
+        for (let i = startPage; i <= endPage; i++) {
+            arr.push(i);
+        }
+        return arr;
+    };
+
+    $scope.getGroupPage = function (pageIndex = 1) {
         const url = contextPath + '/group';
-        console.log("Method fillGroupTable(), url: " + url);
-        $http.get(url)
-                .then(function (resp) {
-                    $scope.Groups = resp.data;
-                });
+        console.log("Method getGroupPage(), url: " + url);
+
+        $http({
+            url: url,
+            method: 'GET',
+            params: {
+                pageIndex: pageIndex
+            }
+        }).then(function (response) {
+            $scope.GroupPage = response.data;
+
+            let minPageIndex = pageIndex - 2;
+            if (minPageIndex < 1) {
+                minPageIndex = 1;
+            }
+
+            let maxPageIndex = pageIndex + 2;
+            if (maxPageIndex > $scope.GroupPage.totalPages) {
+                maxPageIndex = $scope.GroupPage.totalPages;
+            }
+
+            $scope.PaginationArray = $scope.generatePageIndexes(minPageIndex, maxPageIndex);
+        });
     };
 
     $scope.saveGroup = function () {
@@ -28,10 +55,10 @@ universityApp.controller('AllGroupsController', function ($scope, $http) {
         $http.post(url, $scope.NewGroup)
                 .then(function (resp) {
                     $scope.NewGroup = null;
-                    $scope.fillGroupTable();
+                    $scope.getGroupPage();
                 });
     };
 
-    $scope.fillGroupTable();
+    $scope.getGroupPage();
 
 });

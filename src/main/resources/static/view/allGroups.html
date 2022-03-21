@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="group in Groups">
+            <tr ng-repeat="group in GroupPage.content">
                 <td>{{group.groupNumber}}</td>
                 <td>{{group.students.length}}</td>
                 <td>
@@ -26,6 +26,22 @@
             </tr>
             </tbody>
         </table>
+
+        <!-- Пагинация -->
+        <nav aria-label="Group navigation">
+            <ul class="pagination">
+                <li ng-class="GroupPage.first ? 'page-item disabled' : 'page-item'">
+                    <a class="page-link" ng-click="getGroupPage(GroupPage.number)">Пред.</a>
+                </li>
+                <li ng-class="GroupPage.number == pageIndex - 1 ? 'page-item active' : 'page-item'"
+                    ng-repeat="pageIndex in PaginationArray">
+                    <a class="page-link" ng-click="getGroupPage(pageIndex)">{{pageIndex}}</a>
+                </li>
+                <li ng-class="GroupPage.last ? 'page-item disabled' : 'page-item'">
+                    <a class="page-link" ng-click="getGroupPage(GroupPage.number + 2)">След.</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
     <div>

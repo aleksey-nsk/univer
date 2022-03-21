@@ -3,11 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.dto.GroupDto;
 import com.example.demo.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/group")
@@ -22,8 +22,8 @@ public class GroupController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<GroupDto> findAll() {
-        return groupService.findAll();
+    public Page<GroupDto> findPage(@RequestParam("pageIndex") Integer pageIndex) {
+        return groupService.findPage(pageIndex);
     }
 
     @GetMapping("/{id}")
