@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -15,8 +17,12 @@ import java.util.List;
 public class GroupDto {
 
     private Long id;
+
+    @NotNull
+    @NotEmpty
     private String groupNumber;
-    private Date createdAt;
+
+    private LocalDateTime createdAt;
     private List<Student> students;
 
     public static GroupDto valueOf(Group group) {

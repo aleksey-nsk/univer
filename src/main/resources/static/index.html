@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Университет</title>
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+    <script src="index.js"></script>
+</head>
+<body>
+<div class="container" ng-controller="indexController">
+
+    <div class="row">
+        <h1 class="col-md-6">Университет ScaleApps</h1>
+        <a class="btn" href="/logout">Выйти</a>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Группы</h3>
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <td>Номер</td>
+                <td>Количество студентов</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="group in Groups">
+                <td>{{group.groupNumber}}</td>
+                <td>{{group.students.length}}</td>
+                <td>
+                    <button class="btn btn-primary" ng-click="openGroup(group.id)">Открыть</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Добавить новую группу</h3>
+        <form novalidate ng-submit="saveGroup()">
+            <div class="form-group col-md-6">
+                <label for="NewGroupNumber">Номер группы</label>
+                <input class="form-control" type="text" ng-model="NewGroup.groupNumber" id="NewGroupNumber">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit">Добавить</button>
+            </div>
+        </form>
+        <hr/>
+    </div>
+
+</div>
+</body>
+</html>

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +13,7 @@ import java.util.Date;
 public class StudentDto {
 
     private Long id;
-    private Date enrolmentDate;
+    private LocalDateTime enrolmentDate;
     private String lastname;
     private String firstname;
     private String middlename;

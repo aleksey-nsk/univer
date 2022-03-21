@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Service
 @Log4j2
@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
         log.debug("  group: " + group);
 
         Student student = studentDto.mapToStudent();
-        student.setEnrolmentDate(new Date());
+        student.setEnrolmentDate(LocalDateTime.now());
         student.setGroup(group);
         log.debug("  студент для сохранения в БД: " + student);
 

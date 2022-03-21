@@ -8,4 +8,12 @@
 в файле **docker-compose.yaml**. Настройки подключения к БД прописываем  
 в файле src/main/resources/**application-dev.yaml**. Для миграций используем **Liquibase**.
 
+- Тесты написать!
+
+- Swagger документацию сделать!
+
+- Реализована валидация данных с помощью **spring-boot-starter-validation**.
+
+- Фронт
+
 # Как запустить приложение

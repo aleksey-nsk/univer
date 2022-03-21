@@ -9,7 +9,7 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="students_pk"/>
             </column>
-            <column name="enrolment_date" type="date">
+            <column name="enrolment_date" type="timestamp">
                 <constraints nullable="false"/>
             </column>
             <column name="lastname" type="varchar(40)">
