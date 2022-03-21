@@ -1,7 +1,4 @@
-angular.module('app', []).controller('indexController', function ($scope, $http) {
-
-    const contextPath = 'http://localhost:8084/api/v1'; // dev-профиль
-    console.log("contextPath: " + contextPath);
+universityApp.controller('AllGroupsController', function ($scope, $http) {
 
     $scope.logout = function () {
         const url = '/logout';

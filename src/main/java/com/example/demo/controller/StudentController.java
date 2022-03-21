@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/student")
 public class StudentController {
@@ -19,7 +21,7 @@ public class StudentController {
 
     @PostMapping("/{groupId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentDto save(@RequestBody StudentDto studentDto, @PathVariable("groupId") Long groupId) {
+    public StudentDto save(@RequestBody @Valid StudentDto studentDto, @PathVariable("groupId") Long groupId) {
         return studentService.save(studentDto, groupId);
     }
 

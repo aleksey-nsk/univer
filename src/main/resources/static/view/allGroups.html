@@ -1,0 +1,46 @@
+<div class="container">
+
+    <div class="row">
+        <h1 class="col-md-6">Университет ScaleApps</h1>
+        <a class="btn" href="/logout">Выйти</a>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Группы</h3>
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <td>Номер</td>
+                <td>Количество студентов</td>
+                <td>Действия</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="group in Groups">
+                <td>{{group.groupNumber}}</td>
+                <td>{{group.students.length}}</td>
+                <td>
+                    <a class="btn" href="#!one/{{group.id}}">Открыть</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Добавить новую группу</h3>
+        <form novalidate ng-submit="saveGroup()">
+            <div class="form-group col-md-6">
+                <label for="NewGroupNumber">Номер группы</label>
+                <input class="form-control" type="text" ng-model="NewGroup.groupNumber" id="NewGroupNumber">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit">Добавить</button>
+            </div>
+        </form>
+        <hr/>
+    </div>
+
+</div>
