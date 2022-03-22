@@ -1,0 +1,54 @@
+<div class="container">
+
+    <div class="row">
+        <h1 class="col-md-6">Университет ScaleApps</h1>
+        <a class="btn" href="/">Вернуться к списку групп</a>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Группа № {{OneGroup.groupNumber}}</h3>
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <td>Дата зачисления</td>
+                <td>ФИО студента</td>
+                <td>Действия</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="student in OneGroup.students | orderBy : 'lastname'">
+                <td>{{student.enrolmentDate | date:'d MMM yyyy HH:mm:ss'}}</td>
+                <td>{{student.lastname}} {{student.firstname}} {{student.middlename}}</td>
+                <td>
+                    <button class="btn-danger" ng-click="deleteStudent(student.id, OneGroup.id)">Отчислить</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <br/>
+        <h3>Зачислить нового студента</h3>
+        <form novalidate ng-submit="saveStudent(OneGroup.id)">
+            <div class="form-group col-md-6">
+                <label for="NewStudentLastname">Фамилия</label>
+                <input class="form-control" type="text" ng-model="NewStudent.lastname" id="NewStudentLastname">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NewStudentFirstname">Имя</label>
+                <input class="form-control" type="text" ng-model="NewStudent.firstname" id="NewStudentFirstname">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NewStudentMiddlename">Отчество</label>
+                <input class="form-control" type="text" ng-model="NewStudent.middlename" id="NewStudentMiddlename">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit">Зачислить</button>
+            </div>
+        </form>
+        <hr/>
+    </div>
+
+</div>

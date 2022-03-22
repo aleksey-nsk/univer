@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="universityApp">
+<head>
+    <meta charset="utf-8"/>
+    <title>Университет</title>
+    <link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+
+<!-- Директива <ng-view></ng-view> представляет место, где
+производится рендеринг представления, соответствующего маршруту -->
+<ng-view></ng-view>
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/angular-route.min.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/controller/AllGroupsController.js"></script>
+<script src="js/controller/OneGroupController.js"></script>
+
+</body>
+</html>

@@ -42,3 +42,4 @@ build/
 
 # Other
 /.attach_*
+/docker/prod/services/backend/*.jar
