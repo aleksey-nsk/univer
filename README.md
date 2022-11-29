@@ -9,7 +9,7 @@
 в файле src/main/resources/**application-dev.yaml**. Для миграций используем **Liquibase**.
 
 - Для тестирования используем **in-memory базу данных H2**. Настройки test-профиля прописываем
-в файле src/main/resources/**application-test.yaml**. Тесты (**интеграционные** и **unit**) создаём
+в файле src/test/resources/**application-test.yaml**. Тесты (**интеграционные** и **unit**) создаём
 в директории **src/test/java**.
 
 - Документацию к API генерируем с помощью **Swagger**. Для просмотра документации открыть адрес:

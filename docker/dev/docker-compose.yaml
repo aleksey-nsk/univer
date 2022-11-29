@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
     db:
         image: 'postgres:13'
         container_name: 'university_dev_db'
@@ -11,3 +10,8 @@ services:
             - 'POSTGRES_DB=university_dev'
             - 'POSTGRES_USER=admin_dev'
             - 'POSTGRES_PASSWORD=5678'
+        volumes:
+            - db-data:/var/lib/postgresql/data
+
+volumes:
+    db-data:
