@@ -6,11 +6,14 @@
 
 - В dev-профиле используется БД **PostgreSQL** в контейнере **Docker**. Настройки контейнера указываем
 в файле docker/dev/**docker-compose.yaml**. Настройки подключения к БД прописываем
-в файле src/main/resources/**application-dev.yaml**. Для миграций используем **Liquibase**.
+в файле src/main/resources/**application-dev.yaml**.
 
 - Для тестирования используем **in-memory базу данных H2**. Настройки test-профиля прописываем
-в файле src/test/resources/**application-test.yaml**. Тесты (**интеграционные** и **unit**) создаём
-в директории **src/test/java**.
+в файле src/test/resources/**application-test.yaml**. Далее над всеми тестовыми классами пишем
+аннотацию **@ActiveProfiles("test")** для активации тестового профиля.  
+Тесты (**интеграционные** и **unit**) создаём в директории **src/test/java**.
+  
+- Для миграций используем **Liquibase**. В том числе добавляем **миграцию** создающую **индексы**.
 
 - Документацию к API генерируем с помощью **Swagger**. Для просмотра документации открыть адрес:
     - в dev-профиле: http://localhost:8084/swagger-ui/index.html
@@ -18,14 +21,16 @@
 
 - Реализована валидация данных с помощью **spring-boot-starter-validation**.
 
-- Фронтенд реализован на **AngularJS**. Запущенное приложение в dev-профиле
-доступно по адресу http://localhost:8084/:  
+- Фронтенд реализован на **AngularJS**. Структура фронтенда:  
+![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/00_front_struc.png)  
+  
+- Запущенное приложение в dev-профиле доступно по адресу http://localhost:8084/:  
 ![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/01_all_groups.png)    
 ![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/02_one_group.png)  
 
-- Развернул приложение в проде с использованием **Docker-контейнеров**. В итоге
-поднял 3 контейнера (БД, Бэкенд, Фронтенд). Все необходимые файлы находятся в папке **docker/prod**:  
-![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/03_prod.png)  
+- Развернул приложение в проде с использованием **Docker-контейнеров**. В итоге поднял  
+3 контейнера (БД, Бэкенд, Фронтенд). Все необходимые файлы находятся в папке **docker**:  
+![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/03_docker_struc.png)  
 
 # Как запустить приложение
 
@@ -83,7 +88,7 @@
 
 5. Чтобы остановить приложение, нажмите в консоли `Ctrl + C`. Контейнеры будут остановлены.
 
-6. Чтобы удалить контейнеры, выполните команду `docker-compose down`. В результате контейнеры будут удалены.
+6. Чтобы **удалить контейнеры**, выполните команду `docker-compose down`. В результате контейнеры будут удалены.
 
-7. Если нужно удалить и **том (volume) с данными**, тогда выполните  
-команду `docker-compose down --volume`
+7. Если нужно **удалить контейнеры, тома и образы**, выполните   
+   команду `docker-compose down --rmi all --volume`

@@ -3,3 +3,5 @@ databaseChangeLog:
             file: db/changelog/01_table_groups.xml
     -   include:
             file: db/changelog/02_table_students.xml
+    -   include:
+            file: db/changelog/03_create_indexes.xml

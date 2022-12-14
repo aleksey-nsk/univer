@@ -21,10 +21,6 @@ services:
         container_name: 'university_prod_back'
         ports:
             - 8086:8086
-        environment:
-            - 'SERVER_PORT=8086'
-            - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/university_prod'
-            - 'JS_URL=http://localhost:8080'
         depends_on:
             - database
 
