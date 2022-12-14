@@ -30,8 +30,11 @@
 
 - Развернул приложение в проде с использованием **Docker-контейнеров**. В итоге поднял  
 3 контейнера (БД, Бэкенд, Фронтенд). Все необходимые файлы находятся в папке **docker**:  
-![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/03_docker_struc.png)  
+![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/03_1_docker_struc.png)  
 
+- Файл **build_and_push.sh** в корне проекта имеет вид:  
+![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/03_2_build.png)  
+  
 # Как запустить приложение
 
 1. Файл для запуска docker/prod/**docker-compose.yaml** выглядит так:  
