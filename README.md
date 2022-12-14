@@ -34,48 +34,8 @@
 
 # Как запустить приложение
 
-1. Файл для запуска docker/prod/**docker-compose.yaml** выглядит так:
-
-       version: '3.0'
-       
-       services:
-       
-           # База данных PostgreSQL
-           database:
-               image: postgres:13
-               container_name: 'university_prod_db'
-               ports:
-                   - 15436:5432 # для доступа с хост-машины
-               environment:
-                   - 'POSTGRES_DB=university_prod'
-                   - 'POSTGRES_USER=admin_prod'
-                   - 'POSTGRES_PASSWORD=6789'
-               volumes:
-                   - db-data:/var/lib/postgresql/data
-       
-           # Бэкенд (Spring Boot REST API на встроенном Tomcat-сервере)
-           backend:
-               image: alexz2/university_back:1.0.0
-               container_name: 'university_prod_back'
-               ports:
-                   - 8086:8086
-               environment:
-                   - 'SERVER_PORT=8086'
-                   - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/university_prod'
-                   - 'JS_URL=http://localhost:8080'
-               depends_on:
-                   - database
-       
-           # Фронтенд на JavaScript на Nginx-сервере
-           frontend:
-               image: alexz2/university_front:1.0.0
-               container_name: 'university_prod_front'
-               ports:
-                   - 8080:80
-       
-       # Создать volume с именем db-data
-       volumes:
-           db-data:
+1. Файл для запуска docker/prod/**docker-compose.yaml** выглядит так:  
+![](https://github.com/aleksey-nsk/univer/blob/master/screenshots/04_prod.png)  
 
 2. Возьмите машину, на которой установлены **Docker** и утилита **docker-compose**. Скопируйте на эту
 машину файл docker/prod/**docker-compose.yaml**. Далее откройте в терминале папку с этим файлом и
