@@ -33,4 +33,3 @@ target/
 # Other
 /.attach_*
 /docker/build/backend/*.jar
-
